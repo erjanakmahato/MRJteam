@@ -1,0 +1,461 @@
+
+@import url('https://fonts.googleapis.com/css?family=Courgette&display=swap');
+/*****************************************************home**********************************************/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;   
+}
+.container 
+{
+  width: 1100px;
+}
+
+.navbar-header a
+{
+  font-size: 50px;
+  font-weight: bold;
+  color: green;
+}
+#home
+{
+  background:url(../img/backimg.jpg )  no-repeat;
+  min-height: 725px;
+  overflow: hidden;
+  background-size:cover; 
+  font-family: 'Bree Serif', serif;
+  display: block;
+
+}
+section
+{
+  display: block;
+}
+
+
+div
+{
+  display: block;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+
+
+.nav ul
+{
+  list-style: none;
+
+
+}
+
+.nav ul li
+{
+  float: left;
+  padding:0 10px;
+}
+
+.nav ul li a
+
+{
+  text-decoration: none;
+
+}
+
+
+
+
+a
+{
+  color: #fff;
+  font-size: 25px;
+  padding: 10px;
+
+}
+
+
+element.style {
+    line-height: 100px;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+header{
+  display: block;
+  min-height: 85px;
+  transition: 0.7s;
+  z-index: 1;
+  overflow: hidden;
+
+  
+}
+
+.top
+{
+  
+  position: fixed;
+  padding: 20px;
+  background: transparent;
+  display: block;
+  vertical-align: middle;
+ 
+  margin-bottom: 0;
+  padding-bottom: 0;
+ 
+  top: 15px;
+  left: 0px;
+  width: 100%;
+}
+
+.top1
+{
+  background: #333;
+  padding-top: 15px;
+  top: 0px;
+
+
+}
+
+
+
+.txt
+{
+  text-align: center;
+  padding: 145px 0px;
+  font-family: 'Bree Serif', serif;
+
+}
+
+.mnav
+{
+  color:#c91818;
+  font-size: 50px;
+  float: right;
+  display: none;
+  font-weight: bold;
+}
+
+
+.logolike h5
+{
+  font-size: 55px;
+  padding-top:  300px;
+  text-align: center;
+  color: yellow;
+}
+.logolike h5 span1
+{
+  font-size: 60px;
+  color: blue;
+}
+.logolike h5 span
+{
+  color: white;
+  font-family: 'Courgette', cursive;
+}
+
+
+.logolike h4
+{
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+  color: yellow;
+}
+
+/*****************************************************home**********************************************/
+
+
+
+/*****************************************************About**********************************************/
+.txt h1
+{
+  font-size: 55px;
+}
+
+.ab
+{
+  margin-right: -180px;
+  margin-left: 25px;
+
+
+
+}
+
+.ab h3
+{
+ padding-top: 15px;
+ padding-bottom: 5px;
+  font-size: 20px;
+  margin: 0px 0px 12px calc((100% - 310px) * 0.5);
+  font-weight: bold;
+  overflow: hidden;
+}
+
+.ab p
+{
+   margin-left: -40px;
+   overflow: hidden;
+   
+}
+
+
+
+
+/*****************************************************About**********************************************/
+
+.txt1
+{
+  text-align: center;
+
+  font-family: 'Bree Serif', serif;
+  color: white;
+  text-align: center;
+  padding: 100px 0px;
+  font-weight: bold;
+  font-size: 30px;
+
+
+}
+
+
+#abt
+{
+  background: url(../img/backimg1.jpg);
+  background-size: cover;
+  display: block;
+  overflow: hidden;
+  min-width: 200px;
+  margin-top: 200px;
+
+
+
+}
+.team img
+{
+  width: 200px;
+
+
+
+
+}
+#team
+{
+  padding: 80px;
+
+}
+
+h4 
+{
+  
+  font-weight: bold;
+
+  font-size: 30px;
+}
+.tm
+{
+    padding:50px 0px;
+    text-align: center;
+
+}
+.tm t
+{
+  color: #C6C6C6;
+}
+
+h5
+{
+  margin-left:45px;
+  font-weight: 900;
+  font-weight: 15px;
+  padding: 10px;
+}
+
+.te p
+{
+   margin: 0px 0px 12px calc((100% - 233px) * 0.5);
+   color: #C6C6C6;
+}
+
+.tem p
+{
+  color: #C6C6C6;
+  margin: 0px 0px 12px calc((100% - 160px) * 0.5);
+}
+
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 11px;
+    padding-left: 50px;
+}
+
+.h1, .h2, .h3, h1, h2, h3 {
+    margin-top: 40px;
+    margin-bottom: 6px;
+}
+/***************************about**********************/
+
+
+
+
+/************************contact**********************/
+
+.cont
+{
+  
+  padding: 30px 0px;
+
+}
+.cont p
+{
+  margin-left: 425px;
+  color:#979797; 
+  font-weight: bold;
+  font-size: 15px;
+}
+
+strong {
+    font-weight: bold;
+    color: #333;
+    font-size: 20px;
+}
+i
+{
+  margin-top: 1px;
+    margin-right: .3em;
+}
+.col-md-6 p
+{
+  margin-left: 0px;
+  color:#6F6F6F; 
+ 
+}
+
+.form-group
+{
+    color:#666666; 
+
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #2f8fe1;
+    border-color: #2e587c;
+}
+.btns {
+    display: inline-block;
+    padding: 10px 17px;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+#intro 
+{
+  margin-left: -55px;
+}
+#intro  p
+{
+  margin-left:  55px;
+}
+
+#intro i
+{
+  margin-left: 55px;
+}
+
+#intro strong
+{
+  font-size: 12px;
+}
+
+#social strong
+{
+  font-weight: bold;
+}
+
+.social
+{
+  font-size: 27px;
+}
+.mapouter
+{
+  
+  overflow: hidden;
+}
+#contact
+{
+  padding: 10px 0px;
+}
+/************************Contact**********************/
+
+
+
+
+/*******************************footer***************/
+#footer
+{
+  background: #EFF1F2;
+  padding: 80px;
+  overflow: hidden;
+  height: 200px;
+  text-align: center;
+}
+
+#footer .container
+{
+  margin-top:-25px;
+}
+
+
+
+/*************************footer*******************************************/
+
+
+
+
+
+@media(max-width: 480px)
+{
+  nav
+  {
+    display: none;
+  }
+
+  .mnav
+  {
+    display: block;
+  }
+}
+
+@media(min-width: 768px)
+{
+  body 
+  {
+    width: 100%;
+
+  }
+}
