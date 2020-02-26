@@ -46,7 +46,10 @@
                                     <tr>
                                         <th>Student Id</th>
                                         <th>Student's Name</th>
+
                                         <th>Student's RollNo</th>
+                                        <th>Parent's Name</th>
+                                        <th>Parent's Number</th>
                                         <th>Department Name</th>
 
                                         <th>Attendance</th>
@@ -94,10 +97,10 @@
         var Popup, dataTable;
         $(document).ready(function () {
 
-            $("#studentTable").DataTable(
+            @*$("#studentTable").DataTable(
                 {
                     "ajax": {
-                        "url": "/Student/GetData",
+                        "url": "/Student/GetData/?id=9813079818",
                         "type": "GET",
                         "datatype": "json"
                     },
@@ -106,6 +109,8 @@
 
                         { "data": "StudentName" },
                         { "data": "StudentRollNo" },
+                        { "data": "ParentName" },
+                        {"data":"ParentNumber"},
                         { "data": "DepartmentName" },
                         
                         { "data": "Attendance" },
@@ -142,6 +147,7 @@
                                 extend: 'pdf',
                                 text: '<i class="fa fa-file-pdf-o"></i> Pdf'
                             },
+                            
                             {
                                 extend: 'csv',
                                 text: '<i class="fa fa-file-excel-o"></i> CSV'
@@ -161,11 +167,12 @@
                                         .css('font-size', 'inherit');
                                 }
                             }
+                            
 
                         ]
 
                     });
-                });
+                });*@
 
         function PopupForm(url) {
             var formDiv = $('<div/>');

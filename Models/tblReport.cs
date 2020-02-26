@@ -35,5 +35,6 @@ namespace MRJTeam.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblDepartment> tblDepartments1 { get; set; }
         public virtual tblStudent tblStudent { get; set; }
+        public virtual tblTime tblTime { get; set; }
     }
 }

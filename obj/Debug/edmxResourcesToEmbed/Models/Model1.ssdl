@@ -7,6 +7,16 @@
     <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="Table">
+    <Key>
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="StudentId" Type="int" Nullable="false" />
+    <Property Name="Fullname" Type="nvarchar" MaxLength="50" />
+    <Property Name="DepartmentName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attendance" Type="nchar" MaxLength="10" />
+    <Property Name="RollNo" Type="nchar" MaxLength="10" />
+  </EntityType>
   <EntityType Name="tblAttendance">
     <Key>
       <PropertyRef Name="AttendanceId" />
@@ -49,6 +59,8 @@
     <Property Name="StudentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="StudentName" Type="nvarchar" MaxLength="50" />
     <Property Name="StudentRollNo" Type="int" />
+    <Property Name="ParentName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ParentNumber" Type="nvarchar" MaxLength="50" />
     <Property Name="DepartmentName" Type="nvarchar" MaxLength="50" />
     <Property Name="Attendance" Type="nvarchar" MaxLength="50" />
     <Property Name="FingerId" Type="int" />
@@ -62,6 +74,14 @@
     <Property Name="TeacherId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TeacherName" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="tblTime">
+    <Key>
+      <PropertyRef Name="TimeId" />
+    </Key>
+    <Property Name="TimeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ArrivalTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="LeaveTime" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="tblUser">
     <Key>
       <PropertyRef Name="UserId" />
@@ -72,6 +92,9 @@
     <Property Name="Email" Type="nvarchar" MaxLength="50" />
     <Property Name="Fullname" Type="nvarchar" MaxLength="50" />
     <Property Name="Usertype" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsEmailVerifies" Type="bit" />
+    <Property Name="ActivationCode" Type="uniqueidentifier" />
+    <Property Name="ResetPasswordCode" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="UserRoles">
     <Key>
@@ -165,6 +188,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_tblReport_tblTime">
+    <End Role="tblTime" Type="Self.tblTime" Multiplicity="0..1" />
+    <End Role="tblReport" Type="Self.tblReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTime">
+        <PropertyRef Name="TimeId" />
+      </Principal>
+      <Dependent Role="tblReport">
+        <PropertyRef Name="TimeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_UserRoles_Role">
     <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
     <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
@@ -191,12 +226,14 @@
   </Association>
   <EntityContainer Name="thSemesterDBModelStoreContainer">
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblAttendance" EntityType="Self.tblAttendance" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblCourse" EntityType="Self.tblCourse" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblDepartment" EntityType="Self.tblDepartment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblReport" EntityType="Self.tblReport" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblStudent" EntityType="Self.tblStudent" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblTeacher" EntityType="Self.tblTeacher" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTime" EntityType="Self.tblTime" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_tblDepartment_tblReport" Association="Self.FK_tblDepartment_tblReport">
@@ -225,6 +262,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_tblReport_tblStudent" Association="Self.FK_tblReport_tblStudent">
       <End Role="tblStudent" EntitySet="tblStudent" />
+      <End Role="tblReport" EntitySet="tblReport" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblReport_tblTime" Association="Self.FK_tblReport_tblTime">
+      <End Role="tblTime" EntitySet="tblTime" />
       <End Role="tblReport" EntitySet="tblReport" />
     </AssociationSet>
     <AssociationSet Name="FK_UserRoles_Role" Association="Self.FK_UserRoles_Role">

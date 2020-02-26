@@ -23,6 +23,8 @@ namespace MRJTeam.Models
         public int StudentId { get; set; }
         public string StudentName { get; set; }
         public Nullable<int> StudentRollNo { get; set; }
+        public string ParentName { get; set; }
+        public string ParentNumber { get; set; }
         public string DepartmentName { get; set; }
         public string Attendance { get; set; }
         public Nullable<int> FingerId { get; set; }

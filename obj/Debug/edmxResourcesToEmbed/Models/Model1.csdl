@@ -8,6 +8,16 @@
     <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="UserRoles" Relationship="Self.FK_UserRoles_Role" FromRole="Role" ToRole="UserRoles" />
   </EntityType>
+  <EntityType Name="Table">
+    <Key>
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+    <Property Name="Fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DepartmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attendance" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="RollNo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
   <EntityType Name="tblAttendance">
     <Key>
       <PropertyRef Name="AttendanceId" />
@@ -53,6 +63,7 @@
     <NavigationProperty Name="tblDepartments" Relationship="Self.FK_tblDepartment_tblReport" FromRole="tblReport" ToRole="tblDepartment" />
     <NavigationProperty Name="tblDepartments1" Relationship="Self.FK_tblDepartment_tblReport1" FromRole="tblReport" ToRole="tblDepartment" />
     <NavigationProperty Name="tblStudent" Relationship="Self.FK_tblReport_tblStudent" FromRole="tblReport" ToRole="tblStudent" />
+    <NavigationProperty Name="tblTime" Relationship="Self.FK_tblReport_tblTime" FromRole="tblReport" ToRole="tblTime" />
   </EntityType>
   <EntityType Name="tblStudent">
     <Key>
@@ -61,6 +72,8 @@
     <Property Name="StudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="StudentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="StudentRollNo" Type="Int32" />
+    <Property Name="ParentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ParentNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="DepartmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Attendance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="FingerId" Type="Int32" />
@@ -77,6 +90,15 @@
     <NavigationProperty Name="tblDepartments" Relationship="Self.FK_tblDepartment_tblTeacher" FromRole="tblTeacher" ToRole="tblDepartment" />
     <NavigationProperty Name="tblDepartments1" Relationship="Self.FK_tblDepartment_tblTeacher1" FromRole="tblTeacher" ToRole="tblDepartment" />
   </EntityType>
+  <EntityType Name="tblTime">
+    <Key>
+      <PropertyRef Name="TimeId" />
+    </Key>
+    <Property Name="TimeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ArrivalTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LeaveTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblReports" Relationship="Self.FK_tblReport_tblTime" FromRole="tblTime" ToRole="tblReport" />
+  </EntityType>
   <EntityType Name="tblUser">
     <Key>
       <PropertyRef Name="UserId" />
@@ -87,6 +109,9 @@
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Usertype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsEmailVerifies" Type="Boolean" />
+    <Property Name="ActivationCode" Type="Guid" />
+    <Property Name="ResetPasswordCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="UserRoles" Relationship="Self.FK_UserRoles_tblUser" FromRole="tblUser" ToRole="UserRoles" />
   </EntityType>
   <EntityType Name="UserRole">
@@ -195,6 +220,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_tblReport_tblTime">
+    <End Role="tblTime" Type="Self.tblTime" Multiplicity="0..1" />
+    <End Role="tblReport" Type="Self.tblReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTime">
+        <PropertyRef Name="TimeId" />
+      </Principal>
+      <Dependent Role="tblReport">
+        <PropertyRef Name="TimeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_UserRoles_tblUser">
     <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
     <End Role="UserRoles" Type="Self.UserRole" Multiplicity="*" />
@@ -209,12 +246,14 @@
   </Association>
   <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="Tables" EntityType="Self.Table" />
     <EntitySet Name="tblAttendances" EntityType="Self.tblAttendance" />
     <EntitySet Name="tblCourses" EntityType="Self.tblCourse" />
     <EntitySet Name="tblDepartments" EntityType="Self.tblDepartment" />
     <EntitySet Name="tblReports" EntityType="Self.tblReport" />
     <EntitySet Name="tblStudents" EntityType="Self.tblStudent" />
     <EntitySet Name="tblTeachers" EntityType="Self.tblTeacher" />
+    <EntitySet Name="tblTimes" EntityType="Self.tblTime" />
     <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
     <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
     <AssociationSet Name="FK_UserRoles_Role" Association="Self.FK_UserRoles_Role">
@@ -247,6 +286,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_tblReport_tblStudent" Association="Self.FK_tblReport_tblStudent">
       <End Role="tblStudent" EntitySet="tblStudents" />
+      <End Role="tblReport" EntitySet="tblReports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblReport_tblTime" Association="Self.FK_tblReport_tblTime">
+      <End Role="tblTime" EntitySet="tblTimes" />
       <End Role="tblReport" EntitySet="tblReports" />
     </AssociationSet>
     <AssociationSet Name="FK_UserRoles_tblUser" Association="Self.FK_UserRoles_tblUser">

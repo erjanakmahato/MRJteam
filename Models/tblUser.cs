@@ -26,6 +26,9 @@ namespace MRJTeam.Models
         public string Email { get; set; }
         public string Fullname { get; set; }
         public string Usertype { get; set; }
+        public Nullable<bool> IsEmailVerifies { get; set; }
+        public Nullable<System.Guid> ActivationCode { get; set; }
+        public string ResetPasswordCode { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserRole> UserRoles { get; set; }

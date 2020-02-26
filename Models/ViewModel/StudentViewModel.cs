@@ -13,13 +13,21 @@ namespace MRJTeam.Models.ViewModel
         [Required]
         public Nullable<int> StudentRollNo { get; set; }
         [Required]
+        public string ParentName { get; set; }
+        [Display(Name = "Mobile Number:")]
+        [Required(ErrorMessage = "Mobile Number is required.")]
+        [RegularExpression(@"^([0-9]{10})$", ErrorMessage = "Invalid Mobile Number.")]
+        public string ParentNumber { get; set; }
+        [Required]
         public string DepartmentName { get; set; }
         [Required]
         public string Time { get; set; }
         public string Attendance { get; set; }
         public int FingerId { get; set; }
-        public DateTime LeaveTime { get; set; }
-        public DateTime  ArrivalTime { get; set; }
+        [DataType(DataType.Date)]
+        public string LeaveTime { get; set; }
+        [DataType(DataType.Date)]
+        public string  ArrivalTime { get; set; }
 
     }
 }

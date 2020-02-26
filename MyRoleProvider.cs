@@ -1,9 +1,9 @@
-﻿using System;
+﻿using MRJTeam.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
-using MRJTeam.Models;
 
 namespace MRJTeam
 {
@@ -38,9 +38,9 @@ namespace MRJTeam
 
         public override string[] GetRolesForUser(string username)
         {
-            using (Entities objContext = new Entities())
+            using (Entities _db = new Entities())
             {
-                var objUser = objContext.tblUsers.FirstOrDefault(x => x.Username == username);
+                var objUser = _db.tblUsers.FirstOrDefault(x => x.Username == username);
                 if (objUser == null)
                 {
                     return null;
@@ -51,7 +51,6 @@ namespace MRJTeam
                     return ret;
                 }
             }
-
         }
 
         public override string[] GetUsersInRole(string roleName)
@@ -63,7 +62,6 @@ namespace MRJTeam
         {
             var userRoles = GetRolesForUser(username);
             return userRoles.Contains(roleName);
-
         }
 
         public override void RemoveUsersFromRoles(string[] usernames, string[] roleNames)

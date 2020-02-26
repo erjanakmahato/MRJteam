@@ -19,42 +19,24 @@ namespace MRJTeam.Controllers
             //return View(entities.tblStudents.ToList());
             return View();
         }
-
-
-
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        public JsonResult GetData()
+       
+        [HttpGet]
+        public JsonResult GetData(long  id)
         {
             using (Entities db = new Entities())
             {
                 db.Configuration.LazyLoadingEnabled = false;
                 List<StudentViewModel> lst = new List<StudentViewModel>();
-                var catList = db.tblStudents.ToList();
+                var catList = db.tblStudents.Where(x => x.ParentNumber == id.ToString()).ToList();
+
+               // var ctList = db.tblStudents.ToList();
+                
                 foreach (var item in catList)
                 {
-                    lst.Add(new StudentViewModel() { StudentId = item.StudentId, StudentName = item.StudentName,StudentRollNo=item.StudentRollNo,DepartmentName=item.DepartmentName,Attendance=item.Attendance});
+                    lst.Add(new StudentViewModel() { StudentId = item.StudentId, StudentName = item.StudentName, StudentRollNo = item.StudentRollNo, ParentName = item.ParentName, ParentNumber = item.ParentNumber, DepartmentName = item.DepartmentName, Attendance = item.Attendance,ArrivalTime=item.ArrivalTime.ToString(),LeaveTime=item.LeaveTime.ToString() });
                 }
+                
+
                 return Json(new { data = lst }, JsonRequestBehavior.AllowGet);
             }
         }
@@ -78,6 +60,8 @@ namespace MRJTeam.Controllers
                     sub.StudentId = menu.StudentId;
                     sub.StudentName = menu.StudentName;
                     sub.StudentRollNo = menu.StudentRollNo;
+                    sub.ParentName = menu.ParentName;
+                    sub.ParentNumber = menu.ParentNumber;
                     //sub.Time = menu.Time;
                     sub.DepartmentName = menu.DepartmentName;
                     sub.FingerId = menu.StudentId;
@@ -98,6 +82,8 @@ namespace MRJTeam.Controllers
                     tb.StudentName = sm.StudentName;
                     tb.DepartmentName = sm.DepartmentName;
                     tb.StudentRollNo = sm.StudentRollNo;
+                    tb.ParentName = sm.ParentName;
+                    tb.ParentNumber = sm.ParentNumber;
                     db.tblStudents.Add(tb);
                     db.SaveChanges();
                     return Json(new { success = true, message = "Saved Successfully" }, JsonRequestBehavior.AllowGet);
@@ -108,6 +94,8 @@ namespace MRJTeam.Controllers
                     tbm.StudentName = sm.StudentName;
                     tbm.DepartmentName = sm.DepartmentName;
                     tbm.StudentRollNo = sm.StudentRollNo;
+                    tbm.ParentName = sm.ParentName;
+                    tbm.ParentNumber = sm.ParentNumber;
                     db.SaveChanges();
                     return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
                 }

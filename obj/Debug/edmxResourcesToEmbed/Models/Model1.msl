@@ -9,6 +9,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Tables">
+      <EntityTypeMapping TypeName="thSemesterDBModel.Table">
+        <MappingFragment StoreEntitySet="Table">
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+          <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+          <ScalarProperty Name="Attendance" ColumnName="Attendance" />
+          <ScalarProperty Name="RollNo" ColumnName="RollNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="tblAttendances">
       <EntityTypeMapping TypeName="thSemesterDBModel.tblAttendance">
         <MappingFragment StoreEntitySet="tblAttendance">
@@ -54,6 +65,8 @@
           <ScalarProperty Name="StudentId" ColumnName="StudentId" />
           <ScalarProperty Name="StudentName" ColumnName="StudentName" />
           <ScalarProperty Name="StudentRollNo" ColumnName="StudentRollNo" />
+          <ScalarProperty Name="ParentName" ColumnName="ParentName" />
+          <ScalarProperty Name="ParentNumber" ColumnName="ParentNumber" />
           <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
           <ScalarProperty Name="Attendance" ColumnName="Attendance" />
           <ScalarProperty Name="FingerId" ColumnName="FingerId" />
@@ -70,6 +83,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tblTimes">
+      <EntityTypeMapping TypeName="thSemesterDBModel.tblTime">
+        <MappingFragment StoreEntitySet="tblTime">
+          <ScalarProperty Name="TimeId" ColumnName="TimeId" />
+          <ScalarProperty Name="ArrivalTime" ColumnName="ArrivalTime" />
+          <ScalarProperty Name="LeaveTime" ColumnName="LeaveTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="tblUsers">
       <EntityTypeMapping TypeName="thSemesterDBModel.tblUser">
         <MappingFragment StoreEntitySet="tblUser">
@@ -79,6 +101,9 @@
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Fullname" ColumnName="Fullname" />
           <ScalarProperty Name="Usertype" ColumnName="Usertype" />
+          <ScalarProperty Name="IsEmailVerifies" ColumnName="IsEmailVerifies" />
+          <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
+          <ScalarProperty Name="ResetPasswordCode" ColumnName="ResetPasswordCode" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

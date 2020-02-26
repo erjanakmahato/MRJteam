@@ -26,12 +26,14 @@ namespace MRJTeam.Models
         }
     
         public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<Table> Tables { get; set; }
         public virtual DbSet<tblAttendance> tblAttendances { get; set; }
         public virtual DbSet<tblCourse> tblCourses { get; set; }
         public virtual DbSet<tblDepartment> tblDepartments { get; set; }
         public virtual DbSet<tblReport> tblReports { get; set; }
         public virtual DbSet<tblStudent> tblStudents { get; set; }
         public virtual DbSet<tblTeacher> tblTeachers { get; set; }
+        public virtual DbSet<tblTime> tblTimes { get; set; }
         public virtual DbSet<tblUser> tblUsers { get; set; }
         public virtual DbSet<UserRole> UserRoles { get; set; }
     }
